@@ -3,34 +3,38 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <!-- <title>Unity WebGL Player | MaterialScienceApp</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>  
+    <title>Unity WebGL Player | MaterialScienceApp</title>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/MaterialsScienceApp.json", {onProgress: UnityProgress});
-    </script> -->
-
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/MaterialsScienceApp.json");
+    </script>
 
     <script>
       var temperature;
       var lengthDelta;
+      var isGraphWindowOpen = false;
 
       function getTemperature() {
-        temperature = 10;
+        SendMessage("Equation Control", "ExtrnalGetTemperature");
       }
       function getLengthDelta() {
-        lengthDelta = 10;
+        SendMessage("Equation Control", "ExtrnalGetLengthDelta");
       }
+      function ReturnValue(varName, val){
+        if(varName == "temperature"){
+            temperature = val;
+        }
+        if (varName == "lengthDelta") {
+          lengthDelta = val;
+        } 
+        alert(`${varName}: ${val}`);
+      }
+
       function toggleGraphWindow() {
-        alert('lol');
+        isGraphWindowOpen ^= true;
+        alert(`lol ${isGraphWindowOpen}`);
       }
     </script>
-
-
-
-
 
   </head>
   <body>
@@ -38,13 +42,7 @@
       <button id="graph-toggle" type="button" onclick="toggleGraphWindow()">Toggle Graph</button>
     </div>
 
-    <!-- <div class="webgl-content">
-      <div id="gameContainer" style="width: 960px; height: 600px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-        <div class="title">MaterialScienceApp</div>
-      </div>
-    </div> -->
+    <div id="gameContainer" style="width: 1920px; height: 1080px; margin: auto"></div>
   </body>
 </html>
+  
