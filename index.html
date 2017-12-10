@@ -11,8 +11,33 @@
     <script>
       var gameInstance = UnityLoader.instantiate("gameContainer", "Build/MaterialsScienceApp.json", {onProgress: UnityProgress});
     </script>
+
+
+    <script>
+      var temperature;
+      var lengthDelta;
+
+      function getTemperature() {
+        temperature = 10;
+      }
+      function getLengthDelta() {
+        lengthDelta = 10;
+      }
+
+      function toggleGraphWindow() {
+
+      }
+    </script>
+
+
+
+
+
   </head>
   <body>
+    <button id="graph-toggle" type="button">Toggle Graph</button>
+
+
     <div class="webgl-content">
       <div id="gameContainer" style="width: 960px; height: 600px"></div>
       <div class="footer">
