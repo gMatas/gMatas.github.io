@@ -25,6 +25,12 @@
     <style>
       #mode-toggle {
         margin-left: 30%;
+        font-size: inherit;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        background-color: greenyellow;
       }
     </style>
 
@@ -34,12 +40,18 @@
       var isGraphWindowOpen = false;
 
 	    function toggleGraphWindow() {
-        isGraphWindowOpen ^= true;
+        var gameContainer = document.getElementById('gameContainer');
+        var chartContainer = document.getElementById('chartdiv');
         if (isGraphWindowOpen) {
+          chartContainer.style.display = 'none';
+          gameContainer.style.display = 'block';
           document.getElementById('mode-toggle').innerHTML = 'Graph';
         } else {
+          gameContainer.style.display = 'none';
+          chartContainer.style.display = 'block';
           document.getElementById('mode-toggle').innerHTML = 'Back';
         }
+        isGraphWindowOpen ^= true;
       }    
     </script>
 
@@ -51,11 +63,9 @@
       <button id="grapsh-toggle" type="button" onclick="getLengthDelta()">getLengthDelta</button>
 	</div>
 
-    
-
 	<div class="webgl-content">
-		<div id="chartdiv" style="width: 1152px; height: 648px; background-color: #222222;" ></div>
-		<!-- <div id="gameContainer" style="width: 1152px; height: 648px"></div> -->
+		<div id="chartdiv" style="display:none; width: 1152px; height: 648px; background-color: #222222;" ></div>
+		<div id="gameContainer" style="display:block; width: 1152px; height: 648px"></div>
 		<div class="footer">
       <button id="mode-toggle" onclick="toggleGraphWindow()">Graph</button>
 		  <div class="webgl-logo"></div>
