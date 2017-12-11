@@ -32,12 +32,23 @@
         background-color: greenyellow;
       }
     </style>
-
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="chartdiv" style="display:none; width: 1152px; height: 648px; background-color: #222222;" ></div>
+      <div id="gameContainer" style="width: 1152px; height: 648px"></div>
+      <div class="footer">
+        <button id="mode-toggle" onclick="toggleGraphWindow()">Graph</button>
+        <div class="webgl-logo"></div>
+        <div id="fullscreen-button" class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+        <div class="title">MaterialScienceApp</div>
+      </div>
+    </div>
+    </div>
     <script>
       var temperature;
       var lengthDelta;
-      var isGraphWindowOpen = false;
-	    
+      var isGraphWindowOpen = false;   
       function toggleGraphWindow() {
         var gameContainer = document.getElementById('gameContainer');
         var chartContainer = document.getElementById('chartdiv');
@@ -56,19 +67,5 @@
         isGraphWindowOpen ^= true;
       }    
     </script>
-
-  </head>
-  <body>
-    <div class="webgl-content">
-      <div id="chartdiv" style="display:none; width: 1152px; height: 648px; background-color: #222222;" ></div>
-      <div id="gameContainer" style="width: 1152px; height: 648px"></div>
-      <div class="footer">
-        <button id="mode-toggle" onclick="toggleGraphWindow()">Graph</button>
-        <div class="webgl-logo"></div>
-        <div id="fullscreen-button" class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-        <div class="title">MaterialScienceApp</div>
-      </div>
-    </div>
-	  </div>
   </body>
 </html>
