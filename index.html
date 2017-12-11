@@ -3,37 +3,44 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    
     <title>Unity WebGL Player | MaterialScienceApp</title>
+    <!-- unity webGL player javascript sources -->
+	  <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>  
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/MaterialsScienceApp.json");
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/MaterialsScienceApp.json", {onProgress: UnityProgress});
     </script>
+	
+    <title>shitnight | amCharts</title>
+    <!-- amCharts javascript sources -->
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+      <script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/black.js"></script>
+    <script type="text/javascript" src="./chart.js"></script>
+    
+    <style>
+      #mode-toggle {
+        margin-left: 30%;
+      }
+    </style>
 
     <script>
       var temperature;
       var lengthDelta;
       var isGraphWindowOpen = false;
 
-      function getTemperature() {
-        SendMessage("Equation Control", "ExtrnalGetTemperature");
-      }
-      function getLengthDelta() {
-        SendMessage("Equation Control", "ExtrnalGetLengthDelta");
-      }
-      function ReturnValue(varName, val){
-        if(varName == "temperature"){
-            temperature = val;
-        }
-        if (varName == "lengthDelta") {
-          lengthDelta = val;
-        } 
-        alert(`${varName}: ${val}`);
-      }
-
-      function toggleGraphWindow() {
+	    function toggleGraphWindow() {
         isGraphWindowOpen ^= true;
-        alert(`lol ${isGraphWindowOpen}`);
-      }
+        if (isGraphWindowOpen) {
+          document.getElementById('mode-toggle').innerHTML = 'Graph';
+        } else {
+          document.getElementById('mode-toggle').innerHTML = 'Back';
+        }
+      }    
     </script>
 
   </head>
@@ -42,8 +49,19 @@
       <button id="graph-toggle" type="button" onclick="toggleGraphWindow()">Toggle Graph</button>
       <button id="graphss-toggle" type="button" onclick="getTemperture()">getTemperture</button>
       <button id="grapsh-toggle" type="button" onclick="getLengthDelta()">getLengthDelta</button>
-    </div>
-    <div id="gameContainer" style="width: 960; height: 540; margin: auto"></div>
+	</div>
+
+    
+
+	<div class="webgl-content">
+		<div id="chartdiv" style="width: 1152px; height: 648px; background-color: #222222;" ></div>
+		<!-- <div id="gameContainer" style="width: 1152px; height: 648px"></div> -->
+		<div class="footer">
+      <button id="mode-toggle" onclick="toggleGraphWindow()">Graph</button>
+		  <div class="webgl-logo"></div>
+		  <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+		  <div class="title">MaterialScienceApp</div>
+		</div>
+	  </div>
   </body>
 </html>
-  
