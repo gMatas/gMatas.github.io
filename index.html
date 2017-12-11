@@ -45,12 +45,12 @@
         if (isGraphWindowOpen) {
           chartContainer.style.display = 'none';
           gameContainer.style.display = 'block';
-          fullscreenButtonContainer.display = 'block';
+          fullscreenButtonContainer.style.display = 'block';
           document.getElementById('mode-toggle').innerHTML = 'Graph';
         } else {
           gameContainer.style.display = 'none';
           chartContainer.style.display = 'block';
-          fullscreenButtonContainer.display = 'none';
+          fullscreenButtonContainer.style.display = 'none';
           document.getElementById('mode-toggle').innerHTML = 'Back';
         }
         isGraphWindowOpen ^= true;
