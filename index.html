@@ -37,17 +37,20 @@
       var temperature;
       var lengthDelta;
       var isGraphWindowOpen = false;
-
-	    function toggleGraphWindow() {
+	    
+      function toggleGraphWindow() {
         var gameContainer = document.getElementById('gameContainer');
         var chartContainer = document.getElementById('chartdiv');
+	var fullscreenButtonContainer = document.getElementById('fullscreen-button');
         if (isGraphWindowOpen) {
           chartContainer.style.display = 'none';
           gameContainer.style.display = 'block';
+          fullscreenButtonContainer.display = 'block';
           document.getElementById('mode-toggle').innerHTML = 'Graph';
         } else {
           gameContainer.style.display = 'none';
           chartContainer.style.display = 'block';
+          fullscreenButtonContainer.display = 'none';
           document.getElementById('mode-toggle').innerHTML = 'Back';
         }
         isGraphWindowOpen ^= true;
@@ -62,7 +65,7 @@
       <div class="footer">
         <button id="mode-toggle" onclick="toggleGraphWindow()">Graph</button>
         <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+        <div in="fullscreen-button" class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
         <div class="title">MaterialScienceApp</div>
       </div>
     </div>
